@@ -4,7 +4,7 @@ The New Relic Java agent (as of 6.2.1) currently isn't instrumenting some parts 
 
 If you hit either endpoint you'll only see one external call but each should have two:
 
-http://localhost:8080/external/flux/flatMap
+http://localhost:8080/external/flux/flatMap  
 http://localhost:8080/external/flux/flatMapMany
 
 ## Usage
