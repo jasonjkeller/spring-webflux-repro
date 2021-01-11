@@ -91,13 +91,13 @@ public class WebFluxReproController {
 
     @Trace(async = true)
     private void fireAndForgetLogic(final String tests) {
-        Token token = NewRelic.getAgent().getTransaction().getToken();
+//        Token token = NewRelic.getAgent().getTransaction().getToken();
         Mono.just(tests)
                 .flatMap(this::postExternalMonoAlternative) // ---> NOT TRACKED external call
                 .delayElement(Duration.ofSeconds(1))
                 .subscribeOn(Schedulers.parallel())
-                .subscriberContext(Context.of("nr-token", token))
-                .doOnNext(s -> token.link())
+//                .subscriberContext(Context.of("nr-token", token))
+//                .doOnNext(s -> token.link())
                 .subscribe(); // subscribe splits work off to separate thread and hits switchIfEmpty
     }
 
